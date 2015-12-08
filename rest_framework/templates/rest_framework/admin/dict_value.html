@@ -1,0 +1,8 @@
+{% load rest_framework %}
+<table class="table table-striped">
+    <tbody>
+        {% for key, item_value in value.items %}
+        <tr><th>{{ key|capfirst }}</th><td {{ value|add_nested_class }}>{{ item_value|format_value }}</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
