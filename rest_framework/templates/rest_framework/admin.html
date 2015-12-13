@@ -69,6 +69,10 @@
             <!-- Content -->
             <div id="content">
 
+				{% block buttons_section %}
+
+				{% block right_buttons_section %}
+
                 {% if 'GET' in allowed_methods %}
                     <form id="get-form" class="pull-right">
                         <fieldset>
@@ -91,6 +95,8 @@
                         </fieldset>
                     </form>
                 {% endif %}
+
+                {% endblock %}
 
                 {% if post_form %}
                     <button type="button" class="button-form btn btn-primary" data-toggle="modal" data-target="#createModal">
@@ -118,6 +124,8 @@
                         {% trans "Filters" %}
                     </button>
                 {% endif %}
+
+				{% endblock %}
 
                 <div class="content-main">
                     <div class="page-header">
