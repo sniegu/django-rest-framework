@@ -368,6 +368,7 @@ class BrowsableAPIRenderer(BaseRenderer):
     filter_template = 'rest_framework/filters/base.html'
     charset = 'utf-8'
     form_renderer_class = HTMLFormRenderer
+    reuse_post_serializer = True
 
     def get_default_renderer(self, view):
         """
@@ -447,7 +448,7 @@ class BrowsableAPIRenderer(BaseRenderer):
         # If this is valid serializer data, and the form is for the same
         # HTTP method as was used in the request then use the existing
         # serializer instance, rather than dynamically creating a new one.
-        if request.method == method and serializer is not None:
+        if self.reuse_post_serializer and request.method == method and serializer is not None:
             try:
                 kwargs = {'data': request.data}
             except ParseError:
