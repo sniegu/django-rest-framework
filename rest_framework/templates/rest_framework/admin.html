@@ -143,13 +143,17 @@
                         </nav>
                     {% endif %}
 
+                    {% block request_info_block %}
                     <div class="request-info" style="clear: both" >
+                        {% block actual_content %}
                         {% if style == 'list' %}
                             {% include "rest_framework/admin/list.html" %}
                         {% else %}
                             {% include "rest_framework/admin/detail.html" %}
                         {% endif %}
+                        {% endblock %}
                     </div>
+                    {% endblock %}
 
                     {% if paginator %}
                         <nav style="float: right">
